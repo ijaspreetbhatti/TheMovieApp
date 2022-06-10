@@ -64,7 +64,7 @@ const SearchForm = (props) => {
                 </Input>
                 <FormControl.Label>Choose Search Type</FormControl.Label>
                 <Flex flexDirection={"row"} alignItems="center">
-                    <Select value={type} required={true} flex={0.7} mr={3} onValueChange={handleChange}>
+                    <Select defaultValue="multi" value={type} required={true} flex={0.7} mr={3} onValueChange={handleChange}>
                         {types.map((item, i) => <Select.Item key={i} label={item} value={item} />)}
                     </Select>
                     <Button leftIcon={<Icon as={<Ionicons name="ios-search" />} size={7} />} backgroundColor={primary} flex={0.3} onPress={handlePress}>Search</Button>
