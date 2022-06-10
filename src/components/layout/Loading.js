@@ -1,6 +1,6 @@
 import { Box, Center, Text } from "native-base";
 
-export default Loading = (props) => {
+const Loading = (props) => {
     return (
         <Box>
             <Center>
@@ -9,3 +9,5 @@ export default Loading = (props) => {
         </Box>
     );
 }
+
+export default Loading;

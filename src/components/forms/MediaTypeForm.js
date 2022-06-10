@@ -6,6 +6,7 @@ const MediaTypeForm = (props) => {
     let [type, setType] = useState("popular");
 
     const handleChange = (value) => {
+        props.setIsLoading(true);
         setType(value);
         getMedia(props.type, type).then(media => {
             const list = media.results.map((m) => {
@@ -19,6 +20,7 @@ const MediaTypeForm = (props) => {
             })
             console.log(list)
             props.setList([...list]);
+            props.setIsLoading(false);
         }).catch(error => {
             console.log(error);
             throw error;

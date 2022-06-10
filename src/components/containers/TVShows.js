@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MediaTypeForm from "../forms/MediaTypeForm";
+import Loading from "../layout/Loading";
 import MediaList from "../lists/MediaList";
 
 const tvShowsTypes = [
@@ -11,13 +12,15 @@ const tvShowsTypes = [
 
 const type = "tv";
 
-const TVShows = () => {
+const TVShows = ({ navigation }) => {
     const [tvList, setTvList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <>
-            <MediaTypeForm types={tvShowsTypes} type={type} setList={setTvList}></MediaTypeForm>
-            <MediaList type={type} data={tvList}></MediaList>
+            <MediaTypeForm types={tvShowsTypes} type={type} setList={setTvList} setIsLoading={setIsLoading}></MediaTypeForm>
+            {isLoading ? <Loading></Loading> : <MediaList type={type} data={tvList} navigation={navigation}></MediaList>}
+
         </>
     );
 }
