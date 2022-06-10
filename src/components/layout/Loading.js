@@ -2,7 +2,7 @@ import { Box, Center, Text } from "native-base";
 
 const Loading = (props) => {
     return (
-        <Box>
+        <Box width="100%" height="100%" >
             <Center>
                 <Text>Loading...</Text>
             </Center>

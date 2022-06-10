@@ -2,7 +2,7 @@ import { Box, Button, Center, Container, Flex, HStack, Image, Text, VStack } fro
 import { StyleSheet } from "react-native"
 import { lightGray, primary } from "../../config/colors"
 
-export const MediaItem = ({ image, title, navigation, popularity, releaseDate, id }) => {
+export const MediaItem = ({ image, title, navigation, popularity, releaseDate, id, type }) => {
     return (
         <Flex borderBottomWidth={1} borderBottomColor={lightGray} space={2} padding={2} flexDirection="row" alignItems="center" justifyContent="flex-start" width="100%">
             <Image alt={title} source={{ uri: image }} size={"lg"} ml={3} mr={3} ></Image>
@@ -16,7 +16,8 @@ export const MediaItem = ({ image, title, navigation, popularity, releaseDate, i
                     onPress={() =>
                         navigation.navigate('Show', {
                             label: title,
-                            id
+                            id,
+                            type
                         })}
                 >More Details</Button>
             </Flex>

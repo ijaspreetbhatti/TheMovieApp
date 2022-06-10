@@ -1,9 +1,10 @@
 import { Box, Center, FormControl, Select } from "native-base";
 import { useState } from "react";
 import { getMedia } from "../../services/api";
+import { IMG_URL } from "../../config/api_config"
 
 const MediaTypeForm = (props) => {
-    let [type, setType] = useState("");
+    let [type, setType] = useState("popular");
 
     const handleChange = (value) => {
         props.setIsLoading(true);
@@ -15,14 +16,12 @@ const MediaTypeForm = (props) => {
                     id: m.id,
                     title: m.name ? m.name : m.title,
                     popularity: m.popularity,
-                    image: "https://image.tmdb.org/t/p/w500" + m.poster_path
+                    image: IMG_URL + m.poster_path
                 }
             })
-            console.log(list)
             props.setList([...list]);
             props.setIsLoading(false);
         }).catch(error => {
-            console.log(error);
             throw error;
         }
         );
