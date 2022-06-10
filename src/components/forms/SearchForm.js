@@ -20,7 +20,6 @@ const SearchForm = (props) => {
     const loadData = () => {
         searchMedia(props.type, type, query).then(media => {
             const results = media.results.map((m) => {
-                console.log(m)
                 return {
                     releaseDate: m.first_air_date ? m.first_air_date : m.release_date,
                     id: m.id,

@@ -11,9 +11,7 @@ const ShowScreenContainer = ({ navigation, route }) => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        console.log(id)
         getMedia(mediaType, id).then(media => {
-            // console.log(media);
             const { title, overview, popularity, release_date, name, first_air_date } = media;
             const data = {
                 title: title ? title : name,
