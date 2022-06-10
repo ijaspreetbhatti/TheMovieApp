@@ -15,6 +15,7 @@ const MediaList = ({ data, navigation, type }) => {
                     releaseDate={item.releaseDate}
                     id={item.id}
                     type={type}
+                    mediaType={item.mediaType}
                 />
             )}
             keyExtractor={item => item.id}

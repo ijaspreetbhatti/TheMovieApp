@@ -1,14 +1,13 @@
 import { Box, Center, FormControl, Select } from "native-base";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getMedia } from "../../services/api";
 import { IMG_URL } from "../../config/api_config"
 
 const MediaTypeForm = (props) => {
     let [type, setType] = useState("popular");
 
-    const handleChange = (value) => {
+    const loadData = () => {
         props.setIsLoading(true);
-        setType(value);
         getMedia(props.type, type).then(media => {
             const list = media.results.map((m) => {
                 return {
@@ -25,6 +24,15 @@ const MediaTypeForm = (props) => {
             throw error;
         }
         );
+    }
+
+    useEffect(() => {
+        loadData();
+    }, []);
+
+    const handleChange = (value) => {
+        setType(value);
+        loadData();
     }
 
     return (

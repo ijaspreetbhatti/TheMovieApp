@@ -1,24 +1,25 @@
 import { ShowLayout } from '../layout/ShowLayout';
+import Loading from '../layout/Loading';
 import { getMedia } from '../../services/api';
 import { useState, useEffect } from 'react';
 import { IMG_URL } from '../../config/api_config';
 
-import Loading from '../layout/Loading';
-
 const ShowScreenContainer = ({ navigation, route }) => {
     const id = route.params.id;
-    const media = route.params.type;
+    const mediaType = route.params.type;
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        getMedia(media, id).then(media => {
-            const { title, overview, popularity, releaseDate, name, first_air_date } = media;
+        console.log(id)
+        getMedia(mediaType, id).then(media => {
+            // console.log(media);
+            const { title, overview, popularity, release_date, name, first_air_date } = media;
             const data = {
                 title: title ? title : name,
                 overview,
                 popularity,
-                releaseDate: releaseDate ? releaseDate : first_air_date,
+                releaseDate: release_date ? release_date : first_air_date,
                 image: IMG_URL + media.poster_path
             };
             setData(data);
