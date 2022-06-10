@@ -3,7 +3,7 @@ import { useState } from "react";
 import { getMedia } from "../../services/api";
 
 const MediaTypeForm = (props) => {
-    let [type, setType] = useState("popular");
+    let [type, setType] = useState("");
 
     const handleChange = (value) => {
         props.setIsLoading(true);
@@ -32,7 +32,7 @@ const MediaTypeForm = (props) => {
         <Box px={20} py={5}>
             <Center>
                 <FormControl>
-                    <Select selectedValue={type} minWidth={200} onValueChange={handleChange}>
+                    <Select selectedValue={type} minWidth={200} onValueChange={handleChange} placeholder="Select Type">
                         {props.types.map((item, i) => <Select.Item key={i} label={item.label} value={item.value} />)}
                     </Select>
                 </FormControl>
